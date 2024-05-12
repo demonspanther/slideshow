@@ -1,57 +1,182 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>/* Content */
-.content {
-  background-color: black;
-  padding: 15px;
-}
-        h1 {
-  font-size: 20px;
-  word-break: break-all
-}
-        
- .container {
- display: grid;
- align-items: center; 
- grid-template-columns: 1fr 1fr 1fr;
- column-gap: 5px;
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {background-color:black; font-family: Arial, Helvetica, sans-serif;}
+
+#myImg {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+    margin: auto;
+  display: block;
+       float: left;
+    padding: 50px 50px 50px 30px;
+    height: 700px;
+    
+
 }
 
-img {
-  max-width: 75%;
-  max-height:80%;
+#myImg:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
 }
 
-.text {
-  font-size: 20px;
+/* Modal Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  height: 80%;
+
 }
+
+/* Caption of Modal Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
 }
-    </style>
-<link href="./home.css" rel="stylesheet" type="text/css">
+
+/* Add Animation */
+.modal-content, #caption {  
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)} 
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+    h2 {text-align: center;}
+    
+    p {text-align: left;
+       FONT COLOR:white;
+    float: left;
+    padding: 45px 50px 50px 30px;}
+    
+    div {text-align: right;}
+    
+        .dashboard {
+  display: flex;
+  align-items: left;
+  justify-content: left;
+    width: 90%; /* Full width */
+  }
+    
+    .button1 {    position: static; float: left;background-color: transparent;border: 1px solid #000000;}
+    .button2 {  position: static; float: right;background-color: transparent;border: 1px solid #000000;}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
+</style>
 </head>
-    <body style="background-color:black;font-family: Arial, Helvetica, sans-serif";>
-    <h2><FONT COLOR=white>The text is white</h2>
-        
-        
-         <!--USE THIS IF THE IMAGE IS PORTRAIT-->    
-        
- <div class="container">
-      <div class="image">
-        <img src="images/2.jpg">
-      </div>
-      <div class="text">
-        <h1>This is a beautiful picture.</h1>
-      </div>
-     
-     <!--USE THIS IF THE IMAGE IS LANDSCAPE
-  <div class="content">
-  <img src="images/2.jpg" alt="Bear" style="width:100%">
-  <p><FONT COLOR=white>Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.</p>
-  <p><FONT COLOR=white>The text is white Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.</p>-->
-     
-     
+<body>
+
+<h2><FONT COLOR=white>Image Modal</h2>
+
+<div class="dashboard">
+    
+    <img id="myImg" src="images/2.jpg"  style="max-width:99%" >
+    
+<!------------------------------COMMENT OF IMAGE ON THE RIGHT SIDE------------------------------------------------------------------------------------------------------------------------->
+    <p>In this example, we use CSS to create a modal (dialog box) that is hidden by default.<br> hello dsfhsdfhsdghfdf jkdfhdsbeefy leefhdskj<br> hello</p>
+
+</div>
+
+    
+ <a href="img1.html">
+  <img class="button1" src="images/b.png">
+</a> <!--back button arrow-->
+  
+ <a href="img3.html">
+  <img class="button2" src="images/f.png">
+    </a>  <!--next button arrow-->
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="img01">
+  <div id="caption"></div>
+</div>
+    
+
+
+
+
+
+    
+    
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var img = document.getElementById("myImg");
+var modalImg = document.getElementById("img01");
+var captionText = document.getElementById("caption");
+img.onclick = function(){
+  modal.style.display = "block";
+  modalImg.src = this.src;
+  captionText.innerHTML = this.alt;
+}
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() { 
+  modal.style.display = "none";
+}
+</script>
+
 </body>
 </html>
-    
